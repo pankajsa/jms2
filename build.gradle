@@ -1,0 +1,68 @@
+plugins {
+    // Apply the java plugin to add support for Java
+    id 'java'
+    // Apply the application plugin to add support for building a CLI application
+    id 'application'
+
+}
+
+group 'co.eventmesh'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+
+    // https://mvnrepository.com/artifact/javax.jms/javax.jms-api
+    implementation group: 'javax.jms', name: 'javax.jms-api', version: '2.0.1'
+
+
+    implementation group: 'com.solacesystems', name: 'sol-jcsmp', version: '10.6.4'
+//    implementation group: 'com.solacesystems', name: 'sol-jms', version: '10.6.4'
+
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+
+
+    implementation group: 'org.slf4j', name:'slf4j-api', version: '1.7.29'
+    implementation group: 'ch.qos.logback', name:'logback-classic', version: '1.2.3'
+    implementation group: 'ch.qos.logback', name:'logback-core', version: '1.2.3'
+
+
+
+
+//    testImplementation group: 'com.solacesystems', name: 'sol-jcsmp', version: '10.6.4'
+
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.4.2')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.4.2')
+
+
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        // Make sure output from
+        // standard out or error is shown
+        // in Gradle output.
+        showStandardStreams = true
+
+        // Or we use events method:
+        // events 'standard_out', 'standard_error'
+
+        // Or set property events:
+        // events = ['standard_out', 'standard_error']
+
+        // Instead of string values we can
+        // use enum values:
+        // events org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_OUT,
+        //        org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_ERROR,
+    }
+}
+application {
+    // Define the main class for the application
+    mainClassName = 'client.App'
+}
