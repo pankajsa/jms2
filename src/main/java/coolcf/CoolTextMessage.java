@@ -10,7 +10,7 @@ import javax.jms.Message;
 import javax.jms.TextMessage;
 import java.util.Enumeration;
 
-public class CoolTextMessage implements TextMessage {
+class CoolTextMessage implements TextMessage {
     private String text;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 

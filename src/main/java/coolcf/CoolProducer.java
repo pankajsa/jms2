@@ -153,7 +153,7 @@ public class CoolProducer implements MessageProducer {
 //            try {
 //                Thread.sleep(2000);
 //            } catch (InterruptedException e) {
-//                e.printStackTrace();
+//              throw new RuntimeException(e);
 //            }
 //
 //
@@ -224,12 +224,14 @@ public class CoolProducer implements MessageProducer {
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
+
             }
 
 //            prod.send( ((CoolTextMessage)message).getSTextMessage(), this.sDest );
         } catch (JCSMPException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
+
         }
 
     }

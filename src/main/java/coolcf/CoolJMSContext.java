@@ -34,20 +34,25 @@ public class CoolJMSContext implements JMSContext {
 
     protected CoolJMSContext(Hashtable<?,?> env, int sessionMode){
         // Create a JCSMP Session
+
         JCSMPProperties properties = new JCSMPProperties();
 
+        logger.debug(env.toString());
         properties.setProperty(JCSMPProperties.HOST, env.get(Constants.HOST));     // host:port
         properties.setProperty(JCSMPProperties.USERNAME, env.get(Constants.USERNAME)); // client-username
         properties.setProperty(JCSMPProperties.VPN_NAME,  env.get(Constants.VPN_NAME)); // message-vpn
         properties.setProperty(JCSMPProperties.PASSWORD, env.get(Constants.PASSWORD)); // client-password
+        properties.setProperty(JCSMPProperties.PUB_ACK_WINDOW_SIZE, env.get(Constants.PUB_ACK_WINDOW_SIZE)); // client-password
 
         try {
             this.sSession =  JCSMPFactory.onlyInstance().createSession(properties);
             this.sSession.connect();
         } catch (InvalidPropertiesException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
+
         } catch (JCSMPException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
+
         }
 
 

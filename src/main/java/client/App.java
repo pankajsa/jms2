@@ -54,7 +54,8 @@ public class App {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
+
         }
 
         app.cleanup();
@@ -68,8 +69,8 @@ public class App {
         env.put(InitialContext.INITIAL_CONTEXT_FACTORY, "coolcf.CoolInitialContextFactory");
         env.put(Constants.HOST, "localhost");     // host:port
         env.put(Constants.USERNAME, "default"); // client-username
-        env.put(Constants.VPN_NAME,  "default"); // message-vpn
-        env.put(Constants.PASSWORD, "default"); // client-password
+        env.put(Constants.VPN_NAME,  "jmstest"); // message-vpn
+        env.put(Constants.PASSWORD, "default2"); // client-password
 
         initialContext = new InitialContext(env);
         cf = (ConnectionFactory)initialContext.lookup("cf:myCF");
@@ -166,7 +167,7 @@ public class App {
         try {
             Thread.sleep(60000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
 

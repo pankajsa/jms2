@@ -71,7 +71,8 @@ public class CoolConsumer implements MessageConsumer {
             cons.start();
 
         } catch (JCSMPException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
+
         }
 
 

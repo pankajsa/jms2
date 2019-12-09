@@ -19,10 +19,7 @@ public class CoolContext implements Context, Serializable {
 
     @Override
     public Object lookup(Name name) throws NamingException {
-        logger.debug("lookup(Name) ");
-
-        // TODO Auto-generated method stub
-        return null;
+        throw new NamingException("Not Implemented");
     }
 
     @Override
@@ -47,13 +44,13 @@ public class CoolContext implements Context, Serializable {
             }
             throw new NamingException(name);
         } catch (InstantiationException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
+
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return null;
     }
 
     @Override

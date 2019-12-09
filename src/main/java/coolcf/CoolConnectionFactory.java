@@ -48,6 +48,9 @@ public class CoolConnectionFactory implements ConnectionFactory{
     }
 
     protected void setEnv(Hashtable<?,?> env) {
+
         this.env = env;
+        logger.debug(env.toString());
+
     }
 }

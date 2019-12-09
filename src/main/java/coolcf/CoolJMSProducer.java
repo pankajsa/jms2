@@ -54,7 +54,7 @@ public class CoolJMSProducer implements JMSProducer {
 
 //            prod.send( ((CoolTextMessage)message).getSTextMessage(), this.sDest );
         } catch (JCSMPException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
     }
